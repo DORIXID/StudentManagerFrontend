@@ -1,0 +1,32 @@
+# Angular build artifacts
+/dist/
+/out-tsc/
+/tmp/
+/coverage/
+/e2e/test-output/
+
+# Angular working directories
+/.angular/
+
+# Node modules
+/node_modules/
+
+# Lock file (выбери один: npm или Yarn)
+# Если используешь npm — закомментируй yarn.lock, и наоборот
+/package-lock.json
+# /yarn.lock
+
+# Environment variables
+/.env
+
+# Angular CLI & build config artifacts
+/.angular-cli.json
+/.ng/
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

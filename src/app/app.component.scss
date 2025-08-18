@@ -1,0 +1,15 @@
+.body {
+  min-height: 100vh; /* 100% высоты окна */
+  display: flex;
+  background-color: rgb(233, 235, 238);
+  flex-direction: column;
+}
+.container {
+        max-width: 1300px;      /* Максимальная ширина контента */
+        min-width: 270px;
+        background: #ffffff;
+        margin: 0 auto;         /* Центрирует контейнер */
+        box-shadow: 30 30 30px rgb(0, 0, 0); /* Тень для красоты, по желанию */
+        padding: 25px 15px;     /* Внутренние отступы */
+        border-radius: 10px;    /* Скругление углов, по желанию */
+    }

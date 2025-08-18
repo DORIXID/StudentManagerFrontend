@@ -1,0 +1,91 @@
+<!-- <div class="login-form">
+  <form (ngSubmit)="login()">
+    <input [(ngModel)]="username" name="username" placeholder="Логин" required>
+    <input [(ngModel)]="password" name="password" type="password" placeholder="Пароль" required>
+    <button type="submit">Войти</button>
+    <div *ngIf="error" style="color:red">{{ error }}</div>
+  </form>
+</div> -->
+
+<div class="login-form">
+  <form (ngSubmit)="login()">
+    <h2 style="
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #e53935;
+    
+    ">Авторизация</h2>
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        padding-top: 20px;
+      "
+    >
+      <div>
+        <label for="login">Логин</label>
+      </div>
+      <div>
+        <mat-form-field>
+          <input
+            placeholder="Логин"
+            id="login"
+            type="text"
+            matInput
+            [(ngModel)]="username"
+            name="login"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 8px;
+        "
+      >
+        <label for="password">Пароль</label>
+      </div>
+      <div>
+        <mat-form-field>
+          <input
+            placeholder="Пароль"
+            matInput
+            id="password"
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button
+          mat-button
+          type="submit"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background-color: #fff;
+            color: #e53935;
+            border: 1px solid #e53935;
+            border-radius: 4px;
+            padding: 8px 40px;
+            background-color: #f0f2f7;
+          "
+        >
+          <span>Войти</span>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="error" style="color:red">{{ error }}</div>
+  </form>
+</div>

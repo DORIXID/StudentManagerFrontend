@@ -1,0 +1,8 @@
+<main class="body">
+    <div class="container">
+        <app-authorization *ngIf="!auth.isLoggedIn(); else mainApp"></app-authorization>
+    <ng-template #mainApp>
+      <app-mat-table-students></app-mat-table-students>
+    </ng-template>
+    </div>
+</main>

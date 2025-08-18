@@ -1,0 +1,44 @@
+.portret {
+        display: block;
+        margin: 0 auto 24px auto;
+        width: 150px;      /* фиксированная ширина */
+        height: auto;
+        max-width: 100%;
+    }
+#description {
+        border-collapse: collapse;
+    }
+        
+#description, #description th, #description td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    
+    div {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+    input {
+        height: 1em; /* уменьшает высоту (можно подобрать значение под твой дизайн) */
+        font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        font-size: 1em; /* можно уменьшить, если нужно ещё меньше */
+        padding: 2px 4px; /* уменьшает внутренние отступы */
+    }
+    p {
+        height: 1em; /* уменьшает высоту (можно подобрать значение под твой дизайн) */
+        font-size: 1em; /* можно уменьшить, если нужно ещё меньше */
+        padding: 2px 4px; /* уменьшает внутренние отступы */
+    }
+    h1 {
+        color: rgb(255, 92, 87);
+    }
+// button {
+//     font-size: 24px;      /* размер текста */
+//     padding: 2px 20px;   /* внутренние отступы: сверху/снизу и слева/справа */
+//     border-radius: 8px;   /* скругление углов (по желанию) */
+//     width: 300px;
+// }
