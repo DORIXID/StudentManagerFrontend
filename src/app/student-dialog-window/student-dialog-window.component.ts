@@ -8,6 +8,8 @@ import { MatInputModule } from '@angular/material/input';
 import { StudentService } from '../service/student.service';
 import { Student } from '../service/student.service';
 import { FormsModule } from '@angular/forms';
+import { createStudentDTO } from '../service/student.service';
+
 
 @Component({
   selector: 'app-student-dialog-window',
@@ -45,18 +47,20 @@ export class StudentDialogWindowComponent {
   newAge: number = 0;
 
   addStudent() {
-    const student: Student = {
-      id: Number(this.newId),
+    const student: createStudentDTO = {
+      id: this.newId,
       name: this.newName,
       surname: this.newSurname,
       age: Number(this.newAge),
+      password: this.newPassword,
+      userName: this.newUserName,
     };
     if (this.data) {
-      this.studentService.updateStudent(student, this.newUserName, this.newPassword).subscribe(() => {
+      this.studentService.updateStudent(student).subscribe(() => {
         this.dialogRef.close(true);
       });
     } else {
-      this.studentService.addStudent(student, this.newUserName, this.newPassword).subscribe(() => {
+      this.studentService.addStudent(student).subscribe(() => {
         this.dialogRef.close(true);
       });
     }

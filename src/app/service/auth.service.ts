@@ -22,7 +22,6 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    console.log('isLoggedIn called, authorized =', this.authorized);
     return this.authorized;
   }
 

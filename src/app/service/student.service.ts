@@ -4,12 +4,20 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { HttpParams } from '@angular/common/http';
 
-
 export interface Student {
   id: number;
   name: string;
   surname: string;
   age: number;
+}
+
+export interface createStudentDTO {
+  id: number;
+  name: string;
+  surname: string;
+  age: number;
+  password: string;
+  userName: string;
 }
 
 @Injectable({
@@ -27,17 +35,9 @@ export class StudentService {
     );
   }
 
-addStudent(student: Student, userName: string, password: string): Observable<Student> {
-  const params = new HttpParams()
-    .set('userName', userName)
-    .set('password', password);
-
-  return this.http.post<Student>(
-    this.studentsUrl,    // например: /api/students
-    student,              // body
-    { params }
-  );
-}
+  addStudent(student: createStudentDTO): Observable<createStudentDTO> {
+    return this.http.post<createStudentDTO>(this.studentsUrl, student);
+  }
 
   deleteStudent(student: Student): Observable<Student> {
     return this.http.delete<Student>(
@@ -46,17 +46,9 @@ addStudent(student: Student, userName: string, password: string): Observable<Stu
     );
   }
 
-updateStudent(student: Student, userName: string, password: string): Observable<Student> {
-  const params = new HttpParams()
-    .set('userName', userName)
-    .set('password', password);
-
-  return this.http.put<Student>(
-    `${this.studentsUrl}/${student.id}`,
-    student,
-    { params }
-  );
-}
+  updateStudent(student: createStudentDTO): Observable<createStudentDTO> {
+    return this.http.patch<createStudentDTO>(this.studentsUrl, student);
+  }
   // Итак, что бы закрепить
   // Метод возвращает объект Observable в котором объект вида Student[] тогда, когда данные прийдут.
   // Observable ждет данные от http.get (ждет ответа от сервера на get запрос)
