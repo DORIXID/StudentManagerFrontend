@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { StudentService } from '../service/student.service';
 import { Student } from '../service/student.service';
 import { FormsModule } from '@angular/forms';
-import { createStudentDTO } from '../service/student.service';
+import { StudentDTO } from '../service/student.service';
 
 
 @Component({
@@ -47,7 +47,7 @@ export class StudentDialogWindowComponent {
   newAge: number = 0;
 
   addStudent() {
-    const student: createStudentDTO = {
+    const student: StudentDTO = {
       id: this.newId,
       name: this.newName,
       surname: this.newSurname,

@@ -11,7 +11,7 @@ export interface Student {
   age: number;
 }
 
-export interface createStudentDTO {
+export interface StudentDTO {
   id: number;
   name: string;
   surname: string;
@@ -31,23 +31,21 @@ export class StudentService {
   getAllStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(
       this.studentsUrl
-      // , {headers: { Authorization: this.auth.getAuthHeader() },}
     );
   }
 
-  addStudent(student: createStudentDTO): Observable<createStudentDTO> {
-    return this.http.post<createStudentDTO>(this.studentsUrl, student);
+  addStudent(student: StudentDTO): Observable<StudentDTO> {
+    return this.http.post<StudentDTO>(this.studentsUrl, student);
   }
 
   deleteStudent(student: Student): Observable<Student> {
-    return this.http.delete<Student>(
-      `${this.studentsUrl}/${student.id}`
-      // , {headers: { Authorization: this.auth.getAuthHeader() },}
-    );
+    return this.http.delete<Student>(this.studentsUrl, {
+      body: student
+    });
   }
 
-  updateStudent(student: createStudentDTO): Observable<createStudentDTO> {
-    return this.http.patch<createStudentDTO>(this.studentsUrl, student);
+  updateStudent(student: StudentDTO): Observable<StudentDTO> {
+    return this.http.patch<StudentDTO>(this.studentsUrl, student);
   }
   // Итак, что бы закрепить
   // Метод возвращает объект Observable в котором объект вида Student[] тогда, когда данные прийдут.
