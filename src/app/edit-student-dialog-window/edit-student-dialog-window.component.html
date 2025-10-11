@@ -1,0 +1,92 @@
+<form (ngSubmit)="editStudent()">
+  <div
+    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px"
+  >
+    <label for="name">Имя</label>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input
+        placeholder="Имя"
+        id="name"
+        type="text"
+        matInput
+        [(ngModel)]="newName"
+        name="name"
+        required
+      />
+    </mat-form-field>
+  </div>
+
+  <div
+    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px"
+  >
+    <label for="surname">Фамилия</label>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        placeholder="Фамилия"
+        matInput
+        id="surname"
+        type="text"
+        [(ngModel)]="newSurname"
+        name="surname"
+        required
+      />
+    </mat-form-field>
+  </div>
+  <div
+    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px"
+  >
+    <label for="age">Возраст</label>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        placeholder="Возраст"
+        id="age"
+        type="number"
+        matInput
+        [(ngModel)]="newAge"
+        name="age"
+        required
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <div class="buttonsLeft">
+      <button
+        mat-button
+        type="button"
+        (click)="onCancel()"
+        style="
+          display: flex;
+          align-items: center;
+          gap: px;
+          background-color: #fff;
+          color: #6e6e6e;
+        "
+      >
+        <span>Отмена</span>
+      </button>
+    </div>
+    <div class="buttonsRight">
+      <button
+        mat-button
+        type="submit"
+        style="
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          background-color: #fff;
+          color: #e53935;
+        "
+      >
+        <span>Подтвердить</span>
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { StudentService } from '../service/student.service';
-import { Student } from '../service/student.service';
 import { FormsModule } from '@angular/forms';
 import { StudentDTO } from '../service/student.service';
 
@@ -20,12 +19,12 @@ import { StudentDTO } from '../service/student.service';
     MatInputModule,
     FormsModule,
   ],
-  templateUrl: './student-dialog-window.component.html',
-  styleUrl: './student-dialog-window.component.scss',
+  templateUrl: './edit-student-dialog-window.component.html',
+  styleUrl: './edit-student-dialog-window.component.scss',
 })
-export class StudentDialogWindowComponent {
+export class EditStudentDialogWindowComponent {
   constructor(
-    public dialogRef: MatDialogRef<StudentDialogWindowComponent>,
+    public dialogRef: MatDialogRef<EditStudentDialogWindowComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private studentService: StudentService
   ) {
@@ -34,36 +33,24 @@ export class StudentDialogWindowComponent {
       this.newName = data.name;
       this.newSurname = data.surname;
       this.newAge = data.age;
-    }
+    } else {return;}
   }
 
-  students: Student[] = [];
-
   newId: number = 0;
-  newUserName: string = '';
-  newPassword: string = '';
   newName: string = '';
   newSurname: string = '';
   newAge: number = 0;
 
-  addStudent() {
+  editStudent() {
     const student: StudentDTO = {
       id: this.newId,
       name: this.newName,
       surname: this.newSurname,
-      age: Number(this.newAge),
-      password: this.newPassword,
-      userName: this.newUserName,
+      age: Number(this.newAge)
     };
-    if (this.data) {
       this.studentService.updateStudent(student).subscribe(() => {
         this.dialogRef.close(true);
       });
-    } else {
-      this.studentService.addStudent(student).subscribe(() => {
-        this.dialogRef.close(true);
-      });
-    }
   }
   onCancel() {
     this.dialogRef.close();

@@ -1,0 +1,81 @@
+<form (ngSubmit)="editUser()">
+  <div
+    style="
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      padding-top: 20px;
+    "
+  >
+    <label for="userName">Никнейм</label>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input
+        placeholder="Никнейм"
+        id="userName"
+        type="text"
+        matInput
+        [(ngModel)]="newUserName"
+        name="userName"
+        required
+      />
+    </mat-form-field>
+  </div>
+
+  <div
+    style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px"
+  >
+    <!-- почему то не скрывается звездочками пароль -->
+    <label for="password">Пароль</label>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        id="password"
+        placeholder="Введите пароль"
+        [(ngModel)]="newPassword"
+        name="password"
+        required
+      />
+    </mat-form-field>
+  </div>
+
+  <div>
+    <div class="buttonsLeft">
+      <button
+        mat-button
+        type="button"
+        (click)="onCancel()"
+        style="
+          display: flex;
+          align-items: center;
+          gap: px;
+          background-color: #fff;
+          color: #6e6e6e;
+        "
+      >
+        <span>Отмена</span>
+      </button>
+    </div>
+    <div class="buttonsRight">
+      <button
+        mat-button
+        type="submit"
+        style="
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          background-color: #fff;
+          color: #e53935;
+        "
+      >
+        <span>Подтвердить</span>
+      </button>
+    </div>
+  </div>
+</form>

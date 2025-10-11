@@ -1,0 +1,21 @@
+div{
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+div label{
+    justify-content: left;
+    margin-right: 1px;
+}
+
+.buttonsRight{
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.buttonsLeft{
+    display: flex;
+    justify-content: flex-start;
+
+}

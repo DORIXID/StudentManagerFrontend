@@ -56,6 +56,13 @@
       <button
         mat-icon-button
         color="warn"
+        (click)="updateUser(student)"
+      >
+        <mat-icon>person</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        color="warn"
         style="min-width: 50px"
         (click)="deleteStudent(student)"
       >
@@ -92,7 +99,7 @@
       border-radius: 4px;
       background-color: #d4e9ff;
     "
-    (click)="openDialog()"
+    (click)="createStudent()"
   >
     Добавить студента
   </button>

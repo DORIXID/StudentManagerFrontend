@@ -10,8 +10,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { StudentDialogWindowComponent } from '../student-dialog-window/student-dialog-window.component';
+import { EditStudentDialogWindowComponent } from '../edit-student-dialog-window/edit-student-dialog-window.component';
+import { EditUserDialogWindowComponent } from '../edit-user-dialog-window/edit-user-dialog-window.component';
+import { CreateStudentDialogWindowComponent } from '../create-student-dialog-window/student-dialog-window.component';
 import { MatSelectModule } from '@angular/material/select';
+
 
 @Component({
   selector: 'app-mat-table-students',
@@ -73,7 +76,7 @@ export class MatTableStudentsComponent implements OnInit {
       .getStudentsPaginated(page, limit, this.studentsSort, this.order)
       .subscribe((data) => {
         console.log(data);
-        this.dataSource.data = data.items;
+        this.dataSource.data = data.content;
         this.paginator.length = Number(data.meta.total_items) || 0;
       });
   }
@@ -95,7 +98,7 @@ export class MatTableStudentsComponent implements OnInit {
       )
       .subscribe((data) => {
         console.log(data);
-        this.dataSource.data = data.items;
+        this.dataSource.data = data.content;
         this.paginator.length = Number(data.meta.total_items) || 0;
       });
   }
@@ -106,9 +109,9 @@ export class MatTableStudentsComponent implements OnInit {
       .subscribe(() => this.loadSearchedStudents());
   }
 
-  updateStudent(student: Student) {
+  updateUser(student: Student) {
     this.dialog
-      .open(StudentDialogWindowComponent, {
+      .open(EditUserDialogWindowComponent, {
         width: '10%',
         height: '70%',
         data: { ...student },
@@ -117,9 +120,20 @@ export class MatTableStudentsComponent implements OnInit {
       .subscribe(() => this.loadSearchedStudents());
   }
 
-  openDialog() {
+  updateStudent(student: Student) {
     this.dialog
-      .open(StudentDialogWindowComponent, {
+      .open(EditStudentDialogWindowComponent, {
+        width: '10%',
+        height: '70%',
+        data: { ...student },
+      })
+      .afterClosed()
+      .subscribe(() => this.loadSearchedStudents());
+  }
+
+  createStudent() {
+    this.dialog
+      .open(CreateStudentDialogWindowComponent, {
         width: '10%',
         height: '70%',
       })

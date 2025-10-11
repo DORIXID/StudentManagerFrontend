@@ -5,21 +5,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
-
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-
-import { StudentService } from '../service/student.service';
-import { Student } from '../service/student.service';
 
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
   styleUrls: ['./authorization.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, MatFormField, MatInputModule,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatFormField,
+    MatInputModule,
 
     CommonModule,
     FormsModule,

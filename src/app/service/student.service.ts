@@ -11,11 +11,25 @@ export interface Student {
   age: number;
 }
 
+export interface StudentUserPasswordDTO {
+  id: number;
+  name: string;
+  surname: string;
+  age: number;
+  password: string;
+  userName: string;
+}
+
 export interface StudentDTO {
   id: number;
   name: string;
   surname: string;
   age: number;
+}
+
+
+export interface UserPasswordDTO {
+  id: number;
   password: string;
   userName: string;
 }
@@ -34,7 +48,7 @@ export class StudentService {
     );
   }
 
-  addStudent(student: StudentDTO): Observable<StudentDTO> {
+  addStudent(student: StudentUserPasswordDTO): Observable<StudentDTO> {
     return this.http.post<StudentDTO>(this.studentsUrl, student);
   }
 
@@ -47,6 +61,10 @@ export class StudentService {
   updateStudent(student: StudentDTO): Observable<StudentDTO> {
     return this.http.patch<StudentDTO>(this.studentsUrl, student);
   }
+
+  updateUser(user: UserPasswordDTO): Observable<UserPasswordDTO> {
+    return this.http.patch<UserPasswordDTO>(this.studentsUrl + '/user', user);
+  }
   // Итак, что бы закрепить
   // Метод возвращает объект Observable в котором объект вида Student[] тогда, когда данные прийдут.
   // Observable ждет данные от http.get (ждет ответа от сервера на get запрос)
@@ -57,7 +75,7 @@ export class StudentService {
     limit: number,
     sort: string,
     order: 'asc' | 'desc'
-  ): Observable<{ meta: any; items: Student[] }> {
+  ): Observable<{ meta: any; content: Student[] }> {
     let sortParam: string;
     if (order === 'desc') {
       sortParam = `-${sort}`;
@@ -65,7 +83,7 @@ export class StudentService {
       sortParam = sort;
     }
     const url = `${this.studentsUrl}?page=${page}&limit=${limit}&sortBy=${sortParam}`;
-    return this.http.get<{ meta: any; items: Student[] }>(url, {
+    return this.http.get<{ meta: any; content: Student[] }>(url, {
       headers: { Authorization: this.auth.getAuthHeader() },
     });
   }
@@ -77,7 +95,7 @@ export class StudentService {
     limit: number,
     sort: string,
     order: 'asc' | 'desc'
-  ): Observable<{ meta: any; items: Student[] }> {
+  ): Observable<{ meta: any; content: Student[] }> {
     let sortParam: string;
     if (order === 'desc') {
       sortParam = `-${sort}`;
@@ -85,7 +103,7 @@ export class StudentService {
       sortParam = sort;
     }
     const url = `${this.studentsUrl}?page=${page}&limit=${limit}&sortBy=${sortParam}&searchedType=${searchedType}&searchedValue=${searchedVal}`;
-    return this.http.get<{ meta: any; items: Student[] }>(url, {
+    return this.http.get<{ meta: any; content: Student[] }>(url, {
       headers: { Authorization: this.auth.getAuthHeader() },
     });
   }
