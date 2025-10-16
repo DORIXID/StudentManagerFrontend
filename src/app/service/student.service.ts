@@ -75,7 +75,7 @@ export class StudentService {
     limit: number,
     sort: string,
     order: 'asc' | 'desc'
-  ): Observable<{ meta: any; content: Student[] }> {
+  ): Observable<{ totalElements: any;  content: Student[] }> {
     let sortParam: string;
     if (order === 'desc') {
       sortParam = `-${sort}`;
@@ -83,7 +83,7 @@ export class StudentService {
       sortParam = sort;
     }
     const url = `${this.studentsUrl}?page=${page}&limit=${limit}&sortBy=${sortParam}`;
-    return this.http.get<{ meta: any; content: Student[] }>(url, {
+    return this.http.get<{totalElements: any; content: Student[] }>(url, {
       headers: { Authorization: this.auth.getAuthHeader() },
     });
   }
@@ -95,7 +95,7 @@ export class StudentService {
     limit: number,
     sort: string,
     order: 'asc' | 'desc'
-  ): Observable<{ meta: any; content: Student[] }> {
+  ): Observable<{ totalElements: any; content: Student[] }> {
     let sortParam: string;
     if (order === 'desc') {
       sortParam = `-${sort}`;
@@ -103,7 +103,7 @@ export class StudentService {
       sortParam = sort;
     }
     const url = `${this.studentsUrl}?page=${page}&limit=${limit}&sortBy=${sortParam}&searchedType=${searchedType}&searchedValue=${searchedVal}`;
-    return this.http.get<{ meta: any; content: Student[] }>(url, {
+    return this.http.get<{totalElements: any; content: Student[] }>(url, {
       headers: { Authorization: this.auth.getAuthHeader() },
     });
   }

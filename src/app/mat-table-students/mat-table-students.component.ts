@@ -74,10 +74,10 @@ export class MatTableStudentsComponent implements OnInit {
 
     this.studentService
       .getStudentsPaginated(page, limit, this.studentsSort, this.order)
-      .subscribe((data) => {
-        console.log(data);
-        this.dataSource.data = data.content;
-        this.paginator.length = Number(data.meta.total_items) || 0;
+      .subscribe((response) => {
+        console.log(response.content);
+        this.dataSource.data = response.content;
+        this.paginator.length = Number(response.totalElements) || 0;
       });
   }
 
@@ -96,10 +96,10 @@ export class MatTableStudentsComponent implements OnInit {
         this.studentsSort,
         this.order
       )
-      .subscribe((data) => {
-        console.log(data);
-        this.dataSource.data = data.content;
-        this.paginator.length = Number(data.meta.total_items) || 0;
+      .subscribe((response) => {
+        console.log(response.content);
+        this.dataSource.data = response.content;
+        this.paginator.length = Number(response.totalElements) || 0;
       });
   }
 
@@ -113,7 +113,7 @@ export class MatTableStudentsComponent implements OnInit {
     this.dialog
       .open(EditUserDialogWindowComponent, {
         width: '10%',
-        height: '70%',
+        height: '35%',
         data: { ...student },
       })
       .afterClosed()
@@ -124,7 +124,7 @@ export class MatTableStudentsComponent implements OnInit {
     this.dialog
       .open(EditStudentDialogWindowComponent, {
         width: '10%',
-        height: '70%',
+        height: '45%',
         data: { ...student },
       })
       .afterClosed()

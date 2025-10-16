@@ -40,41 +40,4 @@ export class StudentsComponent implements OnInit {
       this.students = data;
     });
   }
-/*
-  addStudent() {
-    const student: Student = {
-      id: Number(this.newId),
-      name: this.newName,
-      surname: this.newSurname,
-      age: Number(this.newAge),
-    };
-    this.studentService.addStudent(student).subscribe(() => {
-      this.loadStudents();
-      this.newId = 0;
-      this.newName = '';
-      this.newSurname = '';
-      this.newAge = 0;
-    });
-  }
-
-  deleteStudent(student: Student) {
-    this.studentService
-      .deleteStudent(student)
-      .subscribe(() => this.loadStudents());
-  }
-
-  updateStudent(student: Student) {
-    let name = prompt('Введите новое имя', student.name);
-    let surname = prompt('Введите новую фамилию', student.surname);
-    let age = Number(prompt('Введите новый возраст', student.age.toString()));
-    if (!name || !surname || !age || typeof age !== 'number') {
-      alert('Данные введены некорректно');
-      return;
-    }
-    const updatedStudent: Student = { ...student, name, surname, age };
-    this.studentService
-      .updateStudent(updatedStudent)
-      .subscribe(() => this.loadStudents());
-  }
-*/
 }
