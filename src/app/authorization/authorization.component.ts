@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormField } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { JwtResponse } from '../service/jwt-response.model';
 
 @Component({
   selector: 'app-authorization',
@@ -17,7 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatFormField,
     MatInputModule,
-
     CommonModule,
     FormsModule,
     MatButtonModule,
@@ -31,20 +31,22 @@ export class LoginComponent {
   constructor(private auth: AuthService, private http: HttpClient) {}
 
   login() {
-    this.auth.setCredentials(this.username, this.password);
     this.http
-      .get('/api/base/students', {
-        headers: { Authorization: this.auth.getAuthHeader() },
+      .post<JwtResponse>('/api/login/new', {
+        username: this.username,
+        password: this.password
       })
       .subscribe({
-        next: () => {
+        next: (response) => {
+          localStorage.setItem('jwt', response.token); // сохраняем токен
           this.auth.setAuthorized(true);
           this.error = '';
         },
         error: () => {
           this.auth.setAuthorized(false);
           this.error = 'Неверный логин или пароль';
-        },
+        }
       });
   }
+
 }

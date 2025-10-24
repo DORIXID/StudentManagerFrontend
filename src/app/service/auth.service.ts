@@ -17,8 +17,8 @@ export class AuthService {
   }
 
   getAuthHeader(): string {
-    if (!this.username || !this.password) return '';
-    return 'Basic ' + btoa(`${this.username}:${this.password}`);
+    const token = localStorage.getItem('jwt');
+    return token ? `Bearer ${token}` : '';
   }
 
   isLoggedIn(): boolean {
